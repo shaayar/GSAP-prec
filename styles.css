@@ -1,0 +1,291 @@
+/* 1. Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Global Fonts */
+@font-face {
+  font-family: "Almarena";
+  src: url("./fonts/Almarena-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Almarena Bold";
+  src: url("./fonts/Almarena-Display-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Almarena Light";
+  src: url("./fonts/Almarena-Display-Light.otf") format("opentype");
+  font-weight: lighter;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 3. Global Link Styling */
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 4. Main Structure and Navigation */
+
+body {
+  position: relative;
+  width: 100vw;
+  font-family: "Almarena", sans-serif;
+
+  .bold {
+    font-family: "Almarena Bold", sans-serif;
+  }
+
+  .light {
+    font-family: "Almarena Light", sans-serif;
+    font-weight: 600;
+  }
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  /* width: clamp(500px, 90%, 1200px); */
+  padding: 0.8rem 2.1rem;
+
+  &:hover {
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+header nav h1 {
+  font-size: clamp(1rem, -1rem + 5.3333vw, 5rem);
+  color: #fff;
+}
+
+ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+
+  li {
+    font-size: clamp(1rem, 0rem + 2.6667vw, 2rem);
+    transition: transform ease-in-out 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+}
+
+main {
+  height: 100%;
+  width: 100%;
+}
+
+/* 5. Carousel Structure */
+
+.carousel-container {
+  --num-slides: 4;
+  /* width: 100%; */
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.carousel-slide-track {
+  display: flex;
+  height: 100%;
+  /* width: 100vw; */
+  transition: transform 0.5s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.carousel-slide {
+  width: 100vw;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Text Styling (Initial) */
+.carousel-slide .heading {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1vw 2vw;
+  /* border-radius: 10px; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-slide .heading h2 {
+  font-size: clamp(2rem, -2rem + 10.6667vw, 6rem);
+}
+
+.carousel-slide .heading p {
+  font-size: clamp(1rem, 0rem + 2.6667vw, 2rem);
+  margin-top: 1rem;
+}
+
+#trending {
+  /* height: 100vh; */
+  padding: 3rem 2rem;
+  display: flex;
+  gap: 2rem;
+  overflow-x: scroll;
+}
+
+#trending h2 {
+  font-size: clamp(1rem, -1rem + 5.3333vw, 3rem);
+  padding-top: 4vw;
+}
+
+.trending-container {
+  scroll-behavior: smooth;
+  padding-top: 1.5rem;
+}
+
+.trending-card-track {
+  display: flex;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.trending-card {
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  height: 15rem;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+}
+
+.trending-card h2 {
+  font-size: clamp(1rem, 0.5rem + 1.3333vw, 1.5rem);
+  color: rgba(255, 255, 255);
+  height: 100%;
+  padding: 2rem 4rem 2rem 2rem;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* About Section */
+
+#about {
+  padding: 2rem;
+}
+
+.horizontal-section {
+  background: #000;
+  padding: 4rem 0;
+  overflow: hidden;
+  min-height: 100vh; /* Ensures vertical scroll space for pinning */
+}
+
+.section-title {
+  text-align: center;
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* 3. Flower Card Styles */
+.flower-card {
+  min-width: 350px;
+  height: 450px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  /* Remove transition: transform 0.3s ease; to let GSAP control positioning */
+}
+
+.flower-image {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.flower-info {
+  padding: 1.5rem;
+  color: white;
+}
+
+.flower-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.flower-price {
+  font-size: 1.2rem;
+  color: #ff69b4;
+  font-weight: 600;
+  display: flex; /* Adjust display for button placement */
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 4. Add to Cart Button Styles */
+.add-to-cart-btn {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+.add-to-cart-btn:hover {
+  background-color: #ff3399;
+}
+
+/* 5. Spacer for post-animation content */
+.spacer-end {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 1.5rem;
+  background-color: #f4f4f4;
+}
